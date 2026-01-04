@@ -9,17 +9,11 @@ const taskList = document.getElementById("task-list");
 let tasks = [];
 let currentFilter = "all";
 
-/* ======================
-   INIT
-====================== */
 document.addEventListener("DOMContentLoaded", () => {
   tasks = getTasksFromStorage();
   applyFilter();
 });
 
-/* ======================
-   ADD TASK
-====================== */
 form.addEventListener("submit", e => {
   e.preventDefault();
 
@@ -31,9 +25,6 @@ form.addEventListener("submit", e => {
   input.focus();
 });
 
-/* ======================
-   TASK ACTIONS
-====================== */
 taskList.addEventListener("click", e => {
   const action = e.target.dataset.action;
   if (!action) return;
@@ -63,9 +54,6 @@ taskList.addEventListener("click", e => {
   }
 });
 
-/* ======================
-   FILTERS
-====================== */
 filters.addEventListener("click", e => {
   if (e.target.tagName !== "BUTTON") return;
 
@@ -79,9 +67,6 @@ filters.addEventListener("click", e => {
   applyFilter();
 });
 
-/* ======================
-   CORE LOGIC
-====================== */
 function addTask(title) {
   tasks.push({
     id: Date.now(),
@@ -117,9 +102,6 @@ function editTask(id, newTitle) {
   saveAndRender();
 }
 
-/* ======================
-   HELPERS
-====================== */
 function applyFilter() {
   let filteredTasks = tasks;
 
@@ -138,4 +120,5 @@ function saveAndRender() {
   saveTasksToStorage(tasks);
   applyFilter();
 }
+
 
